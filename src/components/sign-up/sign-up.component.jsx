@@ -2,6 +2,7 @@ import React from 'react'
 
 import FormInput from '../form-input/form-input.component'
 import CustomButton from '../custom-button/custom-button.component'
+import ErrorMessage from '../error-message/error-message.component'
 
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils'
 
@@ -16,6 +17,7 @@ class SignUp extends React.Component {
             email: '',
             password: '',
             confirmPassword: '',
+            errorMessage: ''
         }
     }
 
@@ -24,7 +26,7 @@ class SignUp extends React.Component {
         const { displayName, email, password, confirmPassword } = this.state
         
         if (password !== confirmPassword) {
-            alert("Passwords Don't Match!")
+            this.setState({errorMessage: "Passwords Don't Match!"})
             return;
         }
 
@@ -36,10 +38,12 @@ class SignUp extends React.Component {
                 email: '',
                 password: '',
                 confirmPassword: '',
+                errorMessage: ''
             })
         }
         catch (error) {
             console.log(error);
+            this.setState({errorMessage: error.message})
         }
     }
 
@@ -87,6 +91,7 @@ class SignUp extends React.Component {
                         label='Confirm Password'
                         required
                     />
+                    <ErrorMessage error={this.state.errorMessage}/>
                     <CustomButton type='submit'>SIGN UP</CustomButton>
                 </form>
             </div>
