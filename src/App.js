@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import { HomePage } from "./pages/home-page/home-page.component.jsx";
 import ShopPage from "./pages/shop/shop.component";
@@ -15,8 +15,6 @@ import { setCurrentUser } from "./redux/user/user.actions";
 class App extends React.Component {
 	unsubscribeFromAuth = null;
 	componentDidMount() {
-		console.log(connect(null, mapDispatchToProps));
-		console.log(connect(null, mapDispatchToProps)(App));
 		const { setCurrentUser } = this.props;
 		this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
 			if (userAuth) {
@@ -43,12 +41,27 @@ class App extends React.Component {
 				<Switch>
 					<Route exact path="/" component={HomePage} />
 					<Route path="/shop" component={ShopPage} />
-					<Route path="/signIn" component={SignInRegisterPage} />
+					<Route
+						exact
+						path="/signin"
+						render={() =>
+							this.props.currentUser ? (
+								<Redirect to="/" />
+							) : (
+								<SignInRegisterPage />
+							)
+						}
+					/>
 				</Switch>
 			</div>
 		);
 	}
 }
+
+// 'mapStateToProps' intercepts the state, pulls out the user object and returns the current user object
+const mapStateToProps = ({ user }) => ({
+	currentUser: user.currentUser,
+});
 
 // 'mapDispatchToProps' returns object containing the props
 // props contains setCurrentUser function which dispatches the action object
@@ -58,13 +71,7 @@ const mapDispatchToProps = (dispatch) => ({
 	setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-// null represents function 'mapStateToProps' as connect looks for parameters 'mapStateToProps' & 'mapDispatchToProps'
-// null because we don't need a function to map state to props because no props are used in App
-// App is top level & isn't passed anything so we dont need a function to convert state to feed as props to App
-
-// 'mapDispatchToProps' function forwards all the dispatch props to the component
-// so we use our custom setCurrentUser function in our component via a prop which does the dispatch within
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 // mapDispatchToProps:
 // by default, components receive 'dispatch' function as a prop by default
