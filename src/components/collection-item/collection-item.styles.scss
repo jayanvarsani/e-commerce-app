@@ -1,9 +1,12 @@
 .collection-item {
-	width: 22%;
+	// width: 22%;
+	width: 370px;
 	display: flex;
 	flex-direction: column;
-	height: 490px;
+	height: 570px;
 	align-items: center;
+	padding: 20px 10px 20px 10px;
+	position: relative;
 
 	.image {
 		width: 100%;
@@ -11,6 +14,22 @@
 		background-size: cover;
 		background-position: center;
 		margin-bottom: 5px;
+	}
+
+	.custom-button {
+		width: 80%;
+		opacity: 0.7;
+		position: absolute;
+		top: 445px;
+	}
+
+	&:hover {
+		.image {
+			opacity: 0.9;
+		}
+		.custom-button {
+			opacity: 0.85;
+		}
 	}
 
 	.collection-footer {

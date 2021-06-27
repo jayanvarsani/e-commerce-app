@@ -9,12 +9,16 @@
 	background-color: #272727;
 	color: white;
 	text-transform: uppercase;
-	// font-family: 'Open Sans Condensed';
 	font-weight: bolder;
 	border: none;
 	cursor: pointer;
-	margin-bottom: 5px;
+	// margin-bottom: 5px;
+	margin: 3px;
 	border-radius: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-inline: auto;
 
 	&:hover {
 		background-color: white;
@@ -29,6 +33,16 @@
 		&:hover {
 			background-color: #357ae8;
 			border: none;
+		}
+	}
+
+	&.inverted {
+		background-color: white;
+		color: black;
+
+		&:hover {
+			background-color: black;
+			color: white;
 		}
 	}
 }

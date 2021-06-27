@@ -10,6 +10,17 @@
 	.buttons {
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
+	}
+
+	@media (max-width: 1000px) {
+		padding-bottom: 70px;
+	}
+
+	@media (min-width: 1000px) {
+		padding-bottom: 0px;
+	}
+
+	.error-container {
+		margin-top: -40px;
 	}
 }
