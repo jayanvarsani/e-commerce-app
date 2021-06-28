@@ -12,11 +12,22 @@
 	right: 86px;
 	z-index: 5;
 
+	.empty-message {
+		font-size: 18px;
+		text-align: center;
+		padding: 15px;
+		padding-top: 5px;
+	}
+
 	.cart-items {
 		max-height: 295px;
 		display: flex;
 		flex-direction: column;
 		overflow-y: scroll;
+
+		&.empty {
+			overflow-y: hidden;
+		}
 	}
 
 	button {
