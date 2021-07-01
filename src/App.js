@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import "./App.css";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { createStructuredSelector } from "reselect";
-import { selectCurrentUser } from "./redux/user/user.selector";
+import { selectCurrentUser } from "./redux/user/user.selectors";
 import CheckOutPage from "./pages/checkout/checkout.component";
 
 class App extends React.Component {
