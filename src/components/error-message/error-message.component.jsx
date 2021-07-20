@@ -1,12 +1,13 @@
 import React from 'react'
+import { ErrorMessageContainer } from './error-message.styles';
 import './error-message.styles.scss'
 
 const ErrorMessage = ({error}) => (
-    <div className="error-container">
+    <ErrorMessageContainer>
         <span>
             {error}
         </span>
-    </div>
+    </ErrorMessageContainer>
 )
 
 export default ErrorMessage

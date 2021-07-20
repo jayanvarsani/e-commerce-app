@@ -6,7 +6,8 @@ import ErrorMessage from '../error-message/error-message.component'
 
 import { auth, createUserProfileDocument } from '../../firebase/firebase.utils'
 
-import './sign-up.styles.scss'
+// import './sign-up.styles.scss'
+import { SignUpContainer } from './sign-up.styles';
 
 class SignUp extends React.Component {
     constructor() {
@@ -55,7 +56,7 @@ class SignUp extends React.Component {
     render() {
         const {displayName, email, password, confirmPassword} = this.state
         return (
-            <div className="sign-up">
+            <SignUpContainer>
                 <h2 className="title">Do not have an account?</h2>
                 <span>Sign up with email and password</span>
                 <form className='sign-up-form' onSubmit={this.handleSubmit}>
@@ -91,10 +92,11 @@ class SignUp extends React.Component {
                         label='Confirm Password'
                         required
                     />
-                    <ErrorMessage error={this.state.errorMessage}/>
+                    {this.state.errorMessage ? 
+                        <ErrorMessage error={this.state.errorMessage}/> : null}
                     <CustomButton type='submit'>SIGN UP</CustomButton>
                 </form>
-            </div>
+            </SignUpContainer>
         )
     }
 }

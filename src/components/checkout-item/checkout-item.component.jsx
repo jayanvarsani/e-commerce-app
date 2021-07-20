@@ -1,37 +1,41 @@
 import React from 'react'
 
-import './checkout-item.styles.scss'
+// import './checkout-item.styles.scss'
 import { addItem, removeProduct, removeItem } from '../../redux/cart/cart.actions';
 import { connect } from 'react-redux';
+import { CheckoutItemContainer, ImageContainer, QuantityContainer, RemoveButtonContainer, TextContainer } from './checkout-item.styles';
 
 const CheckoutItem = ({ cartItem, removeProduct, addItem, removeItem }) => {
     const { name, imageUrl, price, quantity } = cartItem
     return (
-    <div className="checkout-item">
-        <div className="image-container">
+    <CheckoutItemContainer>
+        <ImageContainer>
             <img src={imageUrl} alt="item" />
-        </div>
-        <span className="name">{name}</span>
-            <span className="quantity">
-                <div onClick={() => {
-                    if (quantity > 1) { removeItem(cartItem); }
-                    else {
-                        if (window.confirm("Are you sure you want to remove product from your cart?")) {
-                            removeProduct(cartItem);
-                        }
-                    }
-                }}
-                className="arrow">&#10094;</div>
-                {quantity}
-                <div onClick={()=>addItem(cartItem) } className="arrow">&#10095;</div>
-            </span>
-        <span className="price">{price}</span>
+        </ImageContainer>
+        <TextContainer>{name}</TextContainer>
+        <QuantityContainer>
             <div onClick={() => {
-                if (window.confirm("Are you sure you want to remove product from your cart?")) {
-                    removeProduct(cartItem)}                }
-            }
-            className="remove-button">&#10005;</div>
-    </div>
+                if (quantity > 1) { removeItem(cartItem); }
+                else {
+                    if (window.confirm("Are you sure you want to remove product from your cart?")) {
+                        removeProduct(cartItem);
+                    }
+                }
+                }}>
+                    &#10094;
+            </div>
+            {quantity}
+            <div onClick={()=>addItem(cartItem) }>&#10095;</div>
+        </QuantityContainer>
+        <TextContainer>{price}</TextContainer>
+        <RemoveButtonContainer onClick={() => {
+            if (window.confirm("Are you sure you want to remove product from your cart?")) {
+                    removeProduct(cartItem);
+                }
+            }}>
+            &#10005;
+        </RemoveButtonContainer>
+    </CheckoutItemContainer>
     )
 }
 
