@@ -5,13 +5,13 @@ import SignUp from '../../components/sign-up/sign-up.component';
 import { SignInRegisterContainer, SignInRegisterTitleContainer } from './sign-in-register.styles';
 
 const SignInRegisterPage = () => (
-    <SignInRegisterContainer>
+    <div>
         <SignInRegisterTitleContainer>Sign In Or Register</SignInRegisterTitleContainer>
-        <div className="sign-in-and-sign-up">
+        <SignInRegisterContainer>
             <SignIn />
             <SignUp />
-        </div>
-    </SignInRegisterContainer>
+        </SignInRegisterContainer>
+    </div>
 )
 
 export default SignInRegisterPage
