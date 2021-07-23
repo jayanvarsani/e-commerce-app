@@ -10,8 +10,9 @@ export const PreviewContainer = styled.div`
 	justify-content: space-between;
 `
     
-export const CollectionPreviewTitleContainer = styled.h1`
+export const PreviewTitleContainer = styled.h1`
     font-size: 28px;
 	margin-bottom: 25px;
+	cursor: pointer;
 `
 
