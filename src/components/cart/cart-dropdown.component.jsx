@@ -35,4 +35,4 @@ const mapDispatchToProps = (dispatch) => ({
     toggleCartHidden: () => dispatch(toggleCartHidden())
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CartDropdown));
+export default connect(mapStateToProps, mapDispatchToProps)(CartDropdown);
