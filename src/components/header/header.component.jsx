@@ -1,5 +1,4 @@
 import React from 'react';
-import  {auth} from '../../firebase/firebase.utils'
 import { ReactComponent as Logo } from '../../assets/icons/crown.svg';
 import { connect } from 'react-redux'
 // import './header.styles.scss';
@@ -9,9 +8,10 @@ import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { HeaderContainer, LogoContainer, OptionLink, OptionsContainer } from './header.styles';
+import { signOutStart } from '../../redux/user/user.actions';
 
 // if currentUser state is changed, re-render
-const Header = ({currentUser, hidden}) => (
+const Header = ({currentUser, hidden, signOutStart}) => (
   <HeaderContainer>
     <LogoContainer to='/'>
       <Logo className='logo' />
@@ -20,7 +20,7 @@ const Header = ({currentUser, hidden}) => (
       <OptionLink to='/shop'>SHOP</OptionLink>
       <OptionLink to='/shop'>CONTACT</OptionLink>
       {currentUser ? (
-        <OptionLink as='div' onClick={() => auth.signOut()}>
+        <OptionLink as='div' onClick={signOutStart}>
           SIGN OUT
         </OptionLink>
         ) : (
@@ -40,7 +40,11 @@ const mapStateToProps = createStructuredSelector({
   hidden: selectCartHidden
 })
 
+const mapDispatchToProps = dispatch => ({
+  signOutStart: () => dispatch(signOutStart())
+})
+
 // connect returns a function which will connect the Header to mapStateToProps
 // allows the state to be destructured as props and then connect that to Header
 // allowing store to act as if we used default state management with state and props 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
