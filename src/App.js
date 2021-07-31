@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import { HomePage } from "./pages/home-page/home-page.component.jsx";
@@ -11,49 +11,37 @@ import "./App.css";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 import CheckOutPage from "./pages/checkout/checkout.component";
-import { selectCollectionsForPreview } from "./redux/shop/shop.selectors.js";
 import { checkUserSession } from "./redux/user/user.actions";
 
-class App extends React.Component {
-	unsubscribeFromAuth = null;
-	componentDidMount() {
-		const { checkUserSession } = this.props;
-		checkUserSession();
-	}
+const App = ({ checkUserSession, currentUser }) => {
+	useEffect(() => checkUserSession(), [checkUserSession]);
 
-	componentWillUnmount() {
-		this.unsubscribeFromAuth();
-	}
-
-	render() {
-		return (
-			<div>
-				<Header />
-				<Switch>
-					<Route exact path="/" component={HomePage} />
-					<Route path="/shop" component={ShopPage} />
-					<Route exact path="/checkout" component={CheckOutPage} />
-					<Route
-						exact
-						path="/signin"
-						render={() =>
-							this.props.currentUser ? (
-								<Redirect to="/" />
-							) : (
-								<SignInRegisterPage />
-							)
-						}
-					/>
-				</Switch>
-			</div>
-		);
-	}
-}
+	return (
+		<div>
+			<Header />
+			<Switch>
+				<Route exact path="/" component={HomePage} />
+				<Route path="/shop" component={ShopPage} />
+				<Route exact path="/checkout" component={CheckOutPage} />
+				<Route
+					exact
+					path="/signin"
+					render={() =>
+						currentUser ? (
+							<Redirect to="/" />
+						) : (
+							<SignInRegisterPage />
+						)
+					}
+				/>
+			</Switch>
+		</div>
+	);
+};
 
 // 'mapStateToProps' intercepts the state, pulls out the user object and returns the current user object
 const mapStateToProps = createStructuredSelector({
 	currentUser: selectCurrentUser,
-	collectionsArray: selectCollectionsForPreview,
 });
 
 // 'mapDispatchToProps' returns object containing the props
