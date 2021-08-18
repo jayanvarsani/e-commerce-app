@@ -9,7 +9,8 @@ import { connect } from 'react-redux';
 
 const SignIn = ({emailSignInStart, googleSignInStart}) => {
     const [userCredentials, setCredentials] = useState({ email: '', password: '' })
-    const [errorMessage, setErrorMessage] = useState('')
+    // const [errorMessage, setErrorMessage] = useState('')
+    const errorMessage = ''
     const { email, password } = userCredentials
 
     const handleSubmit = async e => {

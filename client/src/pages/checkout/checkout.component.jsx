@@ -39,8 +39,10 @@ const CheckOutPage = ({cartItems, total}) => (
         <TestWarningContainer>
             Use the following test credit card to perform a payment
             <br />
-            4242 4242 4242 4242 | Expiry: 01/30 | CVC: 123
-
+            4242 4242 4242 4242
+            <br />
+            Expiry: 01/30
+            <br />CVC: 123
         </TestWarningContainer>
     </CheckoutPageContainer>
 )
