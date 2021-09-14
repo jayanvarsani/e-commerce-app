@@ -2,13 +2,15 @@ import styled from "styled-components";
 import CustomButton from "../custom-button/custom-button.component";
 
 export const CollectionItemContainer = styled.div`
-    width: 22vw;
+  /* width: 30vw; */
+  min-width: 350px;
+  width: 25%;
 	display: flex;
 	flex-direction: column;
-	height: 470px;
-	// height: 350px;
+	height: 500px;
 	align-items: center;
 	position: relative;
+  padding: 10px;
 
     &:hover {
 		.image {
@@ -32,6 +34,7 @@ export const CollectionItemContainer = styled.div`
         opacity: 0.85;
         display: flex;
       }
+    }
   }
 `
 
@@ -41,6 +44,7 @@ export const CollectionFooter = styled.div`
     display: flex;
     justify-content: space-between;
     font-size: 18px;
+    margin-bottom: 10px;
 `
     
 export const AddButton = styled(CustomButton)`

@@ -1,9 +1,10 @@
 // import SHOP_DATA from "../../redux/data/shop.data";
 // import SHOP_DATA from "../data/shop.data";
 import ShopActionTypes from "./shop.types";
+import SHOP_DATA from "../data/shop.data";
 
 const INITIAL_STATE = {
-	collections: null,
+	collections: SHOP_DATA,
 	isFetching: false,
 	errorMessage: undefined,
 };

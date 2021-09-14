@@ -7,16 +7,17 @@ import ErrorMessage from '../error-message/error-message.component'
 // import './sign-up.styles.scss'
 import { SignUpContainer } from './sign-up.styles';
 import { connect } from 'react-redux';
-import { signUpStart } from '../../redux/user/user.actions';
+import { signUpFailure, signUpStart } from '../../redux/user/user.actions';
+import { createStructuredSelector } from 'reselect';
+import { selectSignUpError } from '../../redux/user/user.selectors';
 
-const SignUp = ({signUpStart, }) => {
+const SignUp = ({signUpStart, signUpError, signUpFailure}) => {
     const [userCredentials, setUserCredentials] = useState({
         displayName: '',
         email: '',
         password: '',
         confirmPassword: '',
     })
-    const [errorMessage, setErrorMessage] = useState('')
 
     const { displayName, email, password, confirmPassword } = userCredentials
 
@@ -24,7 +25,7 @@ const SignUp = ({signUpStart, }) => {
     const handleSubmit = async event => {
         event.preventDefault()
         if (password !== confirmPassword) {
-            setErrorMessage("Passwords Don't Match!");
+            signUpFailure("Passwords Don't Match!");
             return;
         }
         signUpStart(displayName, email, password)
@@ -72,8 +73,8 @@ const SignUp = ({signUpStart, }) => {
                     label='Confirm Password'
                     required
                 />
-                {errorMessage ? 
-                    <ErrorMessage error={errorMessage}/> : null}
+                {signUpError ? 
+                    <ErrorMessage error={signUpError}/> : null}
                 <CustomButton type='submit'>SIGN UP</CustomButton>
             </form>
         </SignUpContainer >
@@ -81,7 +82,12 @@ const SignUp = ({signUpStart, }) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    signUpStart: (displayName, email, password) => dispatch(signUpStart({displayName, email, password}))
+    signUpStart: (displayName, email, password) => dispatch(signUpStart({ displayName, email, password })),
+    signUpFailure: (error) => dispatch(signUpFailure(error))
 })
 
-export default connect(null, mapDispatchToProps)(SignUp)
+const mapStateToProps = createStructuredSelector({
+    signUpError: selectSignUpError,
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

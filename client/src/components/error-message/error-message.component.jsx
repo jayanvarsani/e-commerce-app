@@ -2,7 +2,7 @@ import React from 'react'
 import { ErrorMessageContainer } from './error-message.styles';
 import './error-message.styles.scss'
 
-const ErrorMessage = ({error}) => (
+const ErrorMessage = ({ error }) => (
     <ErrorMessageContainer>
         <span>
             {error}
