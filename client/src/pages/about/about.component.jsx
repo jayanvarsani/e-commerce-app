@@ -10,7 +10,7 @@ const AboutPage = ({ toggleCartHidden, hidden }) => {
         if (!hidden) toggleCartHidden()
     }, [toggleCartHidden])
     const details = [
-        'This app is made using React, Redux, Router, Styled Components, GraphQL, Firebase, Stripe & more.',
+        'This app is made using React, Redux, Hooks, Router, Styled Components, GraphQL, Firebase, Stripe & more.',
         '',
         'Redux is used for local state management, with persistence.',
         'Styling is done via styled components.',

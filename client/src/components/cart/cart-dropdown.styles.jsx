@@ -19,20 +19,18 @@ export const CartDropdownContainer = styled.div`
 	border-bottom-right-radius: 20px;
 	box-shadow: 0px 5px 10px #0000006d;
 
+	top: 90px;
 	width: 295px;
-	top: 90px;
-	top: 90px;
 
 
 	@media (max-width: 800px) {
 		left: 0; 
 		right: 0; 
-		margin-left: auto; 
-		margin-right: auto; 
+		margin: auto;
 	}
 
 	@media (min-width: 800px) {
-		right: 72px;
+		right: 66px;
 	}
 `
 
