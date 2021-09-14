@@ -17,7 +17,14 @@ export const AboutParagraphContainer = styled.div`
 	font-size: 18px;
 	margin-left: auto;
 	margin-right: auto;
-    width: 700px;
+
+    @media (max-width: 800px) {
+        width: 80%;
+	}
+
+	@media (min-width: 800px) {
+        width: 700px;
+	}
 `
 export const AboutLine = styled.p`
     margin: 0;

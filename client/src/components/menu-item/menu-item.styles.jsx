@@ -47,7 +47,6 @@ export const BackgroundImageContainer = styled.div`
 `
 export const ContentContainer = styled.div`
     height: 100px;
-    width: 190px;
     padding: 0 25px;
     display: flex;
     flex-direction: column;
@@ -61,6 +60,13 @@ export const ContentContainer = styled.div`
     box-shadow: 3px 3px 5px;
 
     border-radius: 10px;
+
+    @media screen and (min-width: 800px) {
+        width: 190px;
+    }
+    @media screen and (max-width: 800px) {
+        width: 150px;
+    }
 `
 export const ContentTitle = styled.span`
     font-weight: bold;

@@ -6,21 +6,30 @@ const emptyStyling = ({ length }) => (
 
 export const CartDropdownContainer = styled.div`
     position: absolute;
-	width: 295px;
-	/* height: 400px; */
 	height: fit-content;
 	display: flex;
 	flex-direction: column;
 	padding: 20px;
 	/* border: 1px solid black; */
 	background-color: white;
-	top: 90px;
-	right: 72px;
+	
 	z-index: 5;
 
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
 	box-shadow: 0px 5px 10px #0000006d;
+
+	@media (max-width: 800px) {
+        top: 90px;
+		right: 32px;
+		width: 295px;
+	}
+
+	@media (min-width: 800px) {
+        top: 90px;
+		right: 72px;
+		width: 295px;
+	}
 `
 
 export const EmptyMessage = styled.span`
