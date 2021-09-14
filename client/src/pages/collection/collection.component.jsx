@@ -4,9 +4,14 @@ import { selectCollection } from '../../redux/shop/shop.selectors';
 import { connect } from 'react-redux';
 import CollectionItem from '../../components/collection-item/collection-item.component';
 import { CollectionPageContainer, CollectionTitleContainer, ItemsContainer } from './collection.styles';
+import { toggleCartHidden } from '../../redux/cart/cart.actions';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { useEffect } from 'react';
 
-const CollectionPage = ({ collection }) => {
-    const { title, items } = collection;
+const CollectionPage = ({ toggleCartHidden, hidden, title, items }) => {
+    useEffect(() => {
+        if (!hidden) toggleCartHidden()
+    }, [toggleCartHidden])
     return (
         <CollectionPageContainer>
             <CollectionTitleContainer>{title.toUpperCase()}</CollectionTitleContainer>
@@ -19,8 +24,12 @@ const CollectionPage = ({ collection }) => {
     );
 }
 
-const mapStateToProps = (state, ownProps) => ({
-    collection: selectCollection(ownProps.match.params.collectionId)(state)
+const mapDispatchToProps = (dispatch) => ({
+    toggleCartHidden: () => dispatch(toggleCartHidden())
 })
 
-export default connect(mapStateToProps)(CollectionPage)
+const mapStateToProps = state => ({
+    hidden: selectCartHidden(state)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionPage)

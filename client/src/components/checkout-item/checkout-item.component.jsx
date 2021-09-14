@@ -27,7 +27,7 @@ const CheckoutItem = ({ cartItem, removeProduct, addItem, removeItem }) => {
             {quantity}
             <div onClick={()=>addItem(cartItem) }>&#10095;</div>
         </QuantityContainer>
-        <TextContainer>{price}</TextContainer>
+        <TextContainer>{`£${price}`}</TextContainer>
         <RemoveButtonContainer onClick={() => {
             if (window.confirm("Are you sure you want to remove product from your cart?")) {
                     removeProduct(cartItem);

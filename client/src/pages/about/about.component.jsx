@@ -1,7 +1,14 @@
 import React from 'react'
 import { AboutLine, AboutPageContainer, AboutParagraphContainer, AboutTitleContainer } from './about.styles';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { toggleCartHidden } from '../../redux/cart/cart.actions';
 
-const AboutPage = () => {
+const AboutPage = ({ toggleCartHidden, hidden }) => {
+    useEffect(() => {
+        if (!hidden) toggleCartHidden()
+    }, [toggleCartHidden])
     const details = [
         'This app is made using React, Redux, Router, Styled Components, GraphQL, Firebase, Stripe & More.',
         '',
@@ -21,4 +28,12 @@ const AboutPage = () => {
     </AboutPageContainer>)
 }
 
-export default AboutPage
+const mapDispatchToProps = (dispatch) => ({
+    toggleCartHidden: () => dispatch(toggleCartHidden())
+})
+
+const mapStateToProps = state => ({
+    hidden: selectCartHidden(state)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AboutPage)

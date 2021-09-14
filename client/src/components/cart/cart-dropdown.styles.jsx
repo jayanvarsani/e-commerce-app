@@ -7,16 +7,20 @@ const emptyStyling = ({ length }) => (
 export const CartDropdownContainer = styled.div`
     position: absolute;
 	width: 295px;
-	// height: 400px;
+	/* height: 400px; */
 	height: fit-content;
 	display: flex;
 	flex-direction: column;
 	padding: 20px;
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	background-color: white;
 	top: 90px;
-	right: 86px;
+	right: 72px;
 	z-index: 5;
+
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	box-shadow: 0px 5px 10px #0000006d;
 `
 
 export const EmptyMessage = styled.span`
@@ -26,7 +30,7 @@ export const EmptyMessage = styled.span`
     padding-top: 5px;
 `
 export const CartItems = styled.div`
-    max-height: 295px;
+    max-height: 278px;
     display: flex;
     flex-direction: column;
     ${emptyStyling}
