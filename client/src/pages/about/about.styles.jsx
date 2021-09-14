@@ -10,8 +10,9 @@ export const AboutTitleContainer = styled.h1`
     text-align: center;
 	font-size: 40px;
 	margin: 0;
+    padding-bottom: 5px;
 `
-export const AboutParagraphContainer = styled.p`
+export const AboutParagraphContainer = styled.div`
     text-align: center;
 	font-size: 18px;
 	margin-left: auto;

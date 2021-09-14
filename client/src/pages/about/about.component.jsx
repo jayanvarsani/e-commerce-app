@@ -15,7 +15,7 @@ const AboutPage = () => {
         <AboutTitleContainer>About This App</AboutTitleContainer>
         <AboutParagraphContainer>
         {
-            details.map(line => <AboutLine>{line}</AboutLine>)
+            details.map(line => <AboutLine key={line}>{line}</AboutLine>)
         }
         </AboutParagraphContainer>
     </AboutPageContainer>)
