@@ -63,6 +63,7 @@ export const AddButton = styled(CustomButton)`
       opacity: 0.9;
       min-width: unset;
       padding: 0px 10px;
+      top: 290px;
 	  }
 `
 
