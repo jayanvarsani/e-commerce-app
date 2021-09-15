@@ -5,7 +5,7 @@ export const CollectionItemContainer = styled.div`
   /* min-width: 325px; */
 	display: flex;
 	flex-direction: column;
-	height: 500px;
+	/* height: 500px; */
 	align-items: center;
 	position: relative;
   padding: 10px;
@@ -23,10 +23,12 @@ export const CollectionItemContainer = styled.div`
 
   @media screen and (min-width: 800px) {
     width: 325px;
+    height: 500px;
   }
 
   @media screen and (max-width: 800px) {
     width: 50%;
+    height: 400px;
     &:hover {
       .image {
         opacity: unset;

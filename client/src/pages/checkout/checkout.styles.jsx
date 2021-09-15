@@ -9,10 +9,14 @@ export const CheckoutPageContainer = styled.div`
 	margin: 50px auto 0;
 
     button {
-        margin-left: auto;
-		margin-top: 20px;
+        /* margin-left: auto; */
+		margin-bottom: 20px;
 		// color: #60db75;
     }
+
+    @media (max-width: 800px) {
+        width: 90%;
+	}
 `
     
 export const CheckoutHeaderContainer = styled.div`
@@ -27,13 +31,18 @@ export const HeaderBlockContainer = styled.div`
     text-transform: capitalize;
     width: 23%;
 
+    @media (max-width: 800px) {
+        font-size: 14px;
+	}
+
     &:last-child {
-        width: 9%;
+        width: 10%;
     }
 `
 export const TotalContainer = styled.div`
     margin-top: 30px;
-    margin-left: auto;
+    /* margin-left: auto; */
+    /* align-items: center; */
     font-size: 36px;
 `
 export const TestWarningContainer = styled.div`
