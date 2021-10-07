@@ -17,6 +17,8 @@ export const AboutParagraphContainer = styled.div`
 	font-size: 18px;
 	margin-left: auto;
 	margin-right: auto;
+    display: flex;
+    flex-direction: column;
 
     @media (max-width: 800px) {
         width: 80%;
@@ -28,4 +30,8 @@ export const AboutParagraphContainer = styled.div`
 `
 export const AboutLine = styled.p`
     margin: 0;
+`
+export const Link = styled.a`
+    margin: 0;
+    text-decoration: underline;
 `
