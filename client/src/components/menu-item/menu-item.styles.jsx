@@ -11,6 +11,7 @@ export const MenuItemContainer = styled.div`
 	margin: 0 7.5px 15px;
 	overflow: hidden;
     border-radius: 20px;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
 
 
     &:hover {
