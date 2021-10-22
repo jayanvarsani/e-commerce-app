@@ -29,6 +29,7 @@ const AboutPage = ({ toggleCartHidden, hidden }) => {
             <AboutLine>{'•'}</AboutLine>
             <Link href='https://www.udemy.com/course/complete-react-developer-zero-to-mastery/'>{'Udemy Course'}</Link>
             <Link href='https://www.udemy.com/certificate/UC-245f2c73-abff-4448-83b8-005b38b237bb/'>{'Certificate'}</Link>
+            <Link href='https://github.com/jayanvarsani/e-commerce-app'>{'Github Source Code'}</Link>
         </AboutParagraphContainer>
     </AboutPageContainer>)
 }
